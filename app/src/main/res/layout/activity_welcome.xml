@@ -11,7 +11,44 @@
     tools:context="com.ho23a.flood_it.WelcomeActivity">
 
     <TextView
+        android:text="Flood-it!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:id="@+id/gameTitle"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="PLAY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameTitle"
+        android:layout_alignLeft="@+id/gameTitle"
+        android:layout_alignStart="@+id/gameTitle"
+        android:layout_marginTop="84dp"
+        android:id="@+id/playButton"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="Instructions "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:id="@+id/instructionsButton"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/playButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:id="@+id/settingsButton"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/instructionsButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
