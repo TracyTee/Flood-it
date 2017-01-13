@@ -15,7 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
         <activity android:name=".instructionsActivity"></activity>
+=======
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SettingsActivity1"
+            android:label="@string/title_activity_settings1" />
+        <activity android:name=".SpinnerActivity"></activity>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>
