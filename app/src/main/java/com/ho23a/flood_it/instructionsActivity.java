@@ -14,10 +14,15 @@ public class instructionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructions);
 
 
-        ((TextView) findViewById(R.id.instructionsText)).setText("Welcome to Flood it game.\n " +
+        TextView instruction = ((TextView) findViewById(R.id.instructionsText));
+        instruction.setText("Welcome to Flood it game.\n " +
                 "Goal: Turn the entire grid into one color in the specified number of steps.\n " +
                 "Your guiding key is the top left corner tile. \n" +
                 "Select a color from the choices on the bottom of the screen.\n" +
                 " This will change continuous tiles of the same color as the corner tile to the specified color.\n");
+
+        instruction.setTextSize(25);
+
+
     }
 }
