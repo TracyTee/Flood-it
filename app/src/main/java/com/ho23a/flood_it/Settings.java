@@ -112,7 +112,7 @@ public class Settings implements Parcelable {
 }
 
 enum Level {
-    EASY,
+    EASY ,
     MEDIUM,
     HARD,
     DEFAULT

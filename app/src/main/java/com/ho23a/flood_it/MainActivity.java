@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         colorScheme = settings.getColorScheme();
         level = settings.getLevel();
+
+
 //        buttonColors = settings.getButtonColors();
 
     }
