@@ -11,7 +11,9 @@ import android.widget.Spinner;
 
 public class SettingsActivity extends AppCompatActivity {
     Spinner levelSpinner;
-    String level;
+    String levelLabel;
+    String colorSchemeLabel;
+    // TODO implement setting color scheme
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,16 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    // parcelable: data across activities
-    public static final String SELECTED_LEVEL = "com.ho23a.flood_it.SELECTED_LEVEL";
+    public static final String SETTINGS_LABEL = "com.ho23a.flood_it.SETTINGS";
     private void save() {
+        // TODO change MainActivity to WelcomeActivity
+        colorSchemeLabel = "";
+        Settings settings = new Settings(colorSchemeLabel, levelLabel);
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(SELECTED_LEVEL, level);
+        intent.putExtra(SETTINGS_LABEL, settings);
         startActivity(intent);
     }
+
 
     private void setLevelSpinner() {
         levelSpinner = (Spinner) findViewById(R.id.levelSpinner);
@@ -50,18 +55,18 @@ public class SettingsActivity extends AppCompatActivity {
         levelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setLevel((String) parent.getItemAtPosition(position));
+                setLevelLabel(
+                        (String) parent.getItemAtPosition(position)
+                );
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
-    private void setLevel(String level) {
-        this.level = level;
+    private void setLevelLabel(String levelLabel) {
+        this.levelLabel = levelLabel;
     }
 
 }

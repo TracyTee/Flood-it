@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Flood-It!</string>
     <string-array name="levels_array">
+        <item>Select Level</item>
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
