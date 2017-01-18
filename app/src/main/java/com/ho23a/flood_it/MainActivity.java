@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Settings.ColorScheme colorScheme;
-    private Settings.Level level;
-    private int[] buttonColors;
+    private ColorScheme colorScheme;
+    private Level level;
+//    private int[] buttonColors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         colorScheme = settings.getColorScheme();
         level = settings.getLevel();
-        buttonColors = settings.getButtonColors();
+//        buttonColors = settings.getButtonColors();
 
-        System.out.println(level);
-        System.out.println(colorScheme);
     }
 
 }

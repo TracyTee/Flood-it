@@ -13,7 +13,7 @@ import android.support.v4.content.ContextCompat;
 public class Settings implements Parcelable {
     private ColorScheme colorScheme;
     private Level level;
-    private int[] buttonColors;
+//    private int[] buttonColors;
     private String colorSchemeLabel;
     private String levelLabel;
 
@@ -22,11 +22,11 @@ public class Settings implements Parcelable {
         this.levelLabel = levelLabel;
         init();
 
-        if (colorScheme == ColorScheme.DEFAULT) {
-            buttonColors = new int[2];
-            buttonColors[0] = R.color.colorPrimary;
-            buttonColors[1] = R.color.colorAccent;
-        }
+//        if (colorScheme == ColorScheme.DEFAULT) {
+//            buttonColors = new int[2];
+//            buttonColors[0] = R.color.colorPrimary;
+//            buttonColors[1] = R.color.colorAccent;
+//        }
     }
 
     private void init() {
@@ -64,22 +64,22 @@ public class Settings implements Parcelable {
         this.level = level;
     }
 
-    public void setButtonColors(int[] buttonColors) {
-        this.buttonColors = buttonColors;
-    }
+//    public void setButtonColors(int[] buttonColors) {
+//        this.buttonColors = buttonColors;
+//    }
 
     public ColorScheme getColorScheme() { return colorScheme; }
 
     public Level getLevel() { return level; }
 
-    public int[] getButtonColors() { return buttonColors; }
+//    public int[] getButtonColors() { return buttonColors; }
 
     //write object values to parcel for storage
     public void writeToParcel(Parcel out, int flags){
         //write all properties to the parcle
         out.writeString(colorSchemeLabel);
         out.writeString(levelLabel);
-        out.writeIntArray(buttonColors);
+//        out.writeIntArray(buttonColors);
     }
 
     //constructor used for parcel
@@ -87,7 +87,7 @@ public class Settings implements Parcelable {
         //read and set saved values from parcel
         colorSchemeLabel = parcel.readString();
         levelLabel = parcel.readString();
-        buttonColors = parcel.createIntArray();
+//        buttonColors = parcel.createIntArray();
         init();
     }
 
@@ -109,17 +109,15 @@ public class Settings implements Parcelable {
     public int describeContents() {
         return hashCode();
     }
+}
 
+enum Level {
+    EASY,
+    MEDIUM,
+    HARD,
+    DEFAULT
+}
 
-
-    public enum Level {
-        EASY,
-        MEDIUM,
-        HARD,
-        DEFAULT
-    }
-
-    public enum ColorScheme {
-        DEFAULT
-    }
+enum ColorScheme {
+    DEFAULT
 }
