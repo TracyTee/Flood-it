@@ -7,6 +7,11 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
+import static com.ho23a.flood_it.Level.DEFAULT;
+import static com.ho23a.flood_it.Level.EASY;
+import static com.ho23a.flood_it.Level.HARD;
+import static com.ho23a.flood_it.Level.MEDIUM;
+
 public class MainActivity extends AppCompatActivity {
     private TextView stepsText;
     private BoardView boardView;
@@ -55,7 +60,5 @@ public class MainActivity extends AppCompatActivity {
         levelToNumSteps.put(Level.EASY,4);
         levelToNumSteps.put(Level.MEDIUM,12);
         levelToNumSteps.put(Level.HARD,16);
-
-
     }
 }

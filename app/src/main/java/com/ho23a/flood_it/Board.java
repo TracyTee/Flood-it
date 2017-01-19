@@ -66,7 +66,7 @@ public class Board {
                 colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
                 break;
             case 8:
-                colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW, Color.MAGENTA};
+                colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW, Color.MAGENTA, Color.DKGRAY, Color.LTGRAY};
                 break;
             default:
                 colors = new int[]{Color.RED, Color.BLUE};
@@ -82,8 +82,6 @@ public class Board {
 
             }
         }
-
-
     }
 
 
