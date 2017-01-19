@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -31,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
         Settings settings = intent.getParcelableExtra(SettingsActivity.SETTINGS_LABEL);
         colorScheme = settings.getColorScheme();
         level = settings.getLevel();
+
+        ((Button) findViewById(R.id.backButton)).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(v.getContext(), WelcomeActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
         setup();
         reset();
@@ -135,5 +145,10 @@ public class MainActivity extends AppCompatActivity {
     private void updateStepsText() {
         numSteps -= 1;
         stepsText.setText(String.format(getString(R.string.steps_text), numSteps, initialNumSteps));
+    }
+
+    private void back(){
+        Intent myIntent = new Intent(view.getContext(), Activity2.class);
+
     }
 }
