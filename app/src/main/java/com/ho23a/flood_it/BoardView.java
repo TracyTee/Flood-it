@@ -41,17 +41,17 @@ public class BoardView extends View {
         int screenHeight = getHeight();
 
         Tile[][] tiles = board.getBoard();
-        int tilesSize = tiles.length;
-        int tileSize = Math.min(screenWidth, screenHeight)/ tilesSize;
+        int boardSize = tiles.length;
+        int tileSize = Math.min(screenWidth, screenHeight)/ boardSize;
 
 //        board.printBoard();
 
-        mDrawable = new ShapeDrawable[tilesSize][tilesSize];
-        for (int i = 0; i < tilesSize; i++) {
+        mDrawable = new ShapeDrawable[boardSize][boardSize];
+        for (int i = 0; i < boardSize; i++) {
             int x = 0;
             int y = tileSize * i;
             int bottomBound = tileSize * (i+1);
-            for (int j = 0; j < tilesSize; j++) {
+            for (int j = 0; j < boardSize; j++) {
 //                System.out.println(String.format("%d, %d, %d, %d", x, y, tileSize * (j + 1), bottomBound));
                 mDrawable[i][j] = new ShapeDrawable();
                 mDrawable[i][j].getPaint().setColor(tiles[i][j].getColor());

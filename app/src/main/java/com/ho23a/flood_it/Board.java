@@ -124,4 +124,8 @@ public class Board {
         return null;
     }
 
+    public boolean updateBoard(int newColor) {
+        return false;
+    }
+
 }
