@@ -11,7 +11,6 @@ import android.widget.Spinner;
 
 public class SettingsActivity extends AppCompatActivity {
     Spinner levelSpinner;
-    String levelLabel;
     String colorSchemeLabel;
     // TODO implement setting color scheme
 
@@ -25,37 +24,31 @@ public class SettingsActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.saveButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save();
                 finish();
             }
         });
     }
 
-    public static final String SETTINGS_LABEL = "com.ho23a.flood_it.SETTINGS";
     private void save() {
-        // TODO change MainActivity to WelcomeActivity
-        colorSchemeLabel = "";
-        Settings settings = new Settings(colorSchemeLabel, levelLabel);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(SETTINGS_LABEL, settings);
-        startActivity(intent);
+//        // TODO change MainActivity to WelcomeActivity
+//        colorSchemeLabel = "";
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.putExtra(SETTINGS_LABEL, settings);
+//        startActivity(intent);
     }
 
 
     private void setLevelSpinner() {
         levelSpinner = (Spinner) findViewById(R.id.levelSpinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.levels_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         levelSpinner.setAdapter(adapter);
 
         levelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setLevelLabel(
+                setLevel(
                         (String) parent.getItemAtPosition(position)
                 );
             }
@@ -65,8 +58,23 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    private void setLevelLabel(String levelLabel) {
-        this.levelLabel = levelLabel;
+    private void setLevel(String levelLabel) {
+        switch(levelLabel) {
+            case "Select Level":
+                Settings.getIntsance().setLevel(Level.DEFAULT);
+                break;
+            case "Easy":
+                Settings.getIntsance().setLevel(Level.EASY);
+                break;
+            case "Medium":
+                Settings.getIntsance().setLevel(Level.MEDIUM);
+                break;
+            case "Hard":
+                Settings.getIntsance().setLevel(Level.HARD);
+                break;
+            default:
+                break;
+        }
     }
 
 }

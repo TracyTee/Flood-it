@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        Settings settings = intent.getParcelableExtra(SettingsActivity.SETTINGS_LABEL);
-        colorScheme = settings.getColorScheme();
-        level = settings.getLevel();
+        colorScheme = Settings.getIntsance().getColorScheme();
+        level = Settings.getIntsance().getLevel();
 
         ((Button) findViewById(R.id.backButton)).setOnClickListener(new View.OnClickListener() {
 

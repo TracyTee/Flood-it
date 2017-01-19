@@ -7,7 +7,7 @@
         <item>Hard</item>
     </string-array>
     <string name="title_activity_settings1">Settings</string>
-    <string name="steps_text">Steps: %d/%d</string>
+    <string name="steps_text">Steps: %1$d/%2$d</string>
 
     <!-- Strings related to Settings -->
 
