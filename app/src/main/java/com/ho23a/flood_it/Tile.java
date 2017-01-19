@@ -12,20 +12,20 @@ public class Tile {
 
     private static int x; //x coordinates
     private static int y; //y coordinates
-    private Color color;
+    private int color;
 
     public Paint p;
 
     /* CONSTRUCTOR */
     public Tile(){
-
+        //color = Color.BLUE ;
     }
 
     /**
      *
      * @return color of tile
      */
-    public Color getColor(){
+    public int getColor(){
         return this.color;
     }
 
@@ -33,9 +33,9 @@ public class Tile {
      * Sets tile color to c
      * @param c
      */
-    public void setColor(Color c){
+    public void setColor(int c){
 
-    this.color = c;
+    this.color =c;
     }
 
     /**
