@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ColorScheme colorScheme;
     private Level level = Level.DEFAULT;
+
     private Board board;
     private int numSteps;
     private int initialNumSteps;
@@ -32,13 +33,19 @@ public class MainActivity extends AppCompatActivity {
         level = settings.getLevel();
 
         setup();
-        board = new Board(levelToSizeMap.get(level));
+        reset();
+    }
 
+    private void reset() {
+        // set values
         initialNumSteps = levelToNumSteps.get(level);
         numSteps = initialNumSteps;
-        stepsText = ((TextView) findViewById(R.id.stepsText));
-        stepsText.setText(String.format("Steps: %d/%d", initialNumSteps, initialNumSteps));
 
+        // set UI
+        stepsText = ((TextView) findViewById(R.id.stepsText));
+        stepsText.setText(String.format(getString(R.string.steps_text), initialNumSteps, initialNumSteps));
+
+        board = new Board(levelToSizeMap.get(level));
         boardView = (BoardView) findViewById(R.id.board_view);
         boardView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -46,18 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN){
                     float screenX = event.getX();
                     float screenY = event.getY();
-                    float viewX = screenX - v.getLeft();
-                    float viewY = screenY - v.getTop();
+                    int viewX = (int) (screenX - v.getLeft());
+                    int viewY = (int) (screenY - v.getTop());
                     System.out.println("Touch coordinates : " +
                             String.valueOf(viewX) + "x" + String.valueOf(viewY));
-                    updateGame((int) viewX, (int) viewY);
+                    updateGame(viewX, viewY);
                 }
                 return true;
             }
         });
 
         resetBoardView();
-
     }
 
     private void updateGame(int clickedX, int clickedY) {
@@ -70,13 +76,28 @@ public class MainActivity extends AppCompatActivity {
             resetBoardView();
         }
 
-        // check if won
+        checkForWin(isFilled);
+    }
+
+    public static final String WIN_NUM_STEPS = "com.ho23a.flood_it.WIN_NUM_STEPS";
+    public static final String GAME_WON = "com.ho23a.flood_it.GAME_WON";
+
+    private void checkForWin(boolean isFilled) {
         if (numSteps >= 0  & isFilled) {
             // won
-            startActivity(new Intent(this, WinActivity.class));
-        } else if (numSteps == 0 && !isFilled) {
+            int stepsUsed = initialNumSteps - numSteps;
+            String winNumSteps = String.format("%d/%d", stepsUsed, initialNumSteps);
+
+            Intent intent = new Intent (this, GameOverActivity.class);
+            intent.putExtra(WIN_NUM_STEPS, winNumSteps);
+            intent.putExtra(GAME_WON, true);
+            startActivity(intent);
+
+        } else if (numSteps == 0) {
             // lose
-            startActivity(new Intent(this, LoseActivity.class));
+            Intent intent = new Intent (this, GameOverActivity.class);
+            intent.putExtra(GAME_WON, false);
+            startActivity(intent);
         }
     }
 
@@ -106,19 +127,13 @@ public class MainActivity extends AppCompatActivity {
         levelToNumSteps.put(Level.EASY, 4);
         levelToNumSteps.put(Level.MEDIUM, 12);
         levelToNumSteps.put(Level.HARD, 16);
-
-        //Initialize label
-        numSteps = levelToNumSteps.get(level);
-      //  stepsText.setText(numSteps);
     }
-
 
     /**
-     * update number of steps on click
+     * Update number of steps on click
      */
-    private void updateStepsText(){
+    private void updateStepsText() {
         numSteps -= 1;
-        stepsText.setText(String.format("Steps: %d/%d", numSteps, initialNumSteps));
+        stepsText.setText(String.format(getString(R.string.steps_text), numSteps, initialNumSteps));
     }
-
 }

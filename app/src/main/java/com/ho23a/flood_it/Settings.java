@@ -21,12 +21,6 @@ public class Settings implements Parcelable {
         this.colorSchemeLabel = colorSchemeLabel;
         this.levelLabel = levelLabel;
         init();
-
-//        if (colorScheme == ColorScheme.DEFAULT) {
-//            buttonColors = new int[2];
-//            buttonColors[0] = R.color.colorPrimary;
-//            buttonColors[1] = R.color.colorAccent;
-//        }
     }
 
     private void init() {

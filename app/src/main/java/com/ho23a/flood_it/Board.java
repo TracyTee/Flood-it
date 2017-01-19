@@ -31,9 +31,7 @@ public class Board {
         createBoard(size);
     }
 
-    public Board() {
-
-    }
+    public Board() {}
 
     /**
      * initializes board and its components

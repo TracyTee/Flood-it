@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.instructionsButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                instructions();
+                startInstructions();
             }
         });
 
@@ -33,18 +33,22 @@ public class WelcomeActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.settingsButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startSettings();
             }
         });
     }
 
     public void play(){
-
+        startActivity(new Intent(this, MainActivity.class));
     }
 
-    public void instructions(){
+    public void startInstructions(){
         //open instructions display page
         Intent intent = new Intent(this, instructionsActivity.class);
         startActivity(intent);
+    }
+
+    public void startSettings() {
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 }

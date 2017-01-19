@@ -1,5 +1,6 @@
 package com.ho23a.flood_it;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,6 @@ public class instructionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructions);
 
-
         TextView instruction = ((TextView) findViewById(R.id.instructionsText));
         instruction.setText("Welcome to Flood it game.\n " +
                 "Goal: Turn the entire grid into one color in the specified number of steps.\n " +
@@ -22,7 +22,9 @@ public class instructionsActivity extends AppCompatActivity {
                 " This will change continuous tiles of the same color as the corner tile to the specified color.\n");
 
         instruction.setTextSize(25);
+    }
 
-
+    public void startMenu(View view) {
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
