@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private HashMap<Level, Integer> levelToSizeMap = new HashMap<>();
 
     private HashMap<Level, Integer> levelToNumSteps = new HashMap<>();
+    private int numSteps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         colorScheme = settings.getColorScheme();
         level = settings.getLevel();
 
-        setBoardSize();
+        setup();
         board = new Board(levelToSizeMap.get(level));
 
-        setNumSteps();
+
+
+
 
         // set steps to stepstext
         stepsText = ((TextView) findViewById(R.id.stepsText));
@@ -48,17 +51,34 @@ public class MainActivity extends AppCompatActivity {
         boardView.reset(board);
     }
 
-    private void setBoardSize() {
+
+    private void setup() {
+
+        //initialize level to grid size HM
         levelToSizeMap.put(Level.DEFAULT, 2);
         levelToSizeMap.put(Level.EASY, 2);
         levelToSizeMap.put(Level.MEDIUM, 4);
         levelToSizeMap.put(Level.HARD, 8);
+
+
+
+        //initialize level to numSteps HM
+        levelToNumSteps.put(DEFAULT, 4);
+        levelToNumSteps.put(EASY, 4);
+        levelToNumSteps.put(MEDIUM, 12);
+        levelToNumSteps.put(HARD, 16);
+
+        //Initialize label
+        numSteps = levelToNumSteps.get(level);
+      //  stepsText.setText(numSteps);
     }
 
-    private void setNumSteps() {
-        levelToNumSteps.put(Level.DEFAULT,4);
-        levelToNumSteps.put(Level.EASY,4);
-        levelToNumSteps.put(Level.MEDIUM,12);
-        levelToNumSteps.put(Level.HARD,16);
+
+    /**
+     * update number of steps on click
+     */
+    private void updateNumSteps(){
+
     }
+
 }

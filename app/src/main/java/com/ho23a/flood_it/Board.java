@@ -117,9 +117,11 @@ public class Board {
 
     }
 
-//    public Tile getClickedTile(int x, int y){
-//
-//    }
 
     public Tile[][] getBoard() { return board; }
+
+    public Tile getClickedTile(int x, int y){
+        return null;
+    }
+
 }
