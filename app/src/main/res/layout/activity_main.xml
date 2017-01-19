@@ -11,7 +11,7 @@
     tools:context="com.ho23a.flood_it.MainActivity">
 
     <TextView
-        android:text="TextView"
+        android:text="Steps: 20/20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/stepsText"

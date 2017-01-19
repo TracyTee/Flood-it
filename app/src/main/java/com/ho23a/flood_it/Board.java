@@ -10,10 +10,6 @@ import static com.ho23a.flood_it.Level.MEDIUM;
 
 public class Board {
     private int size;
-    private enum Level{
-        EASY,
-        MEDIUM,
-        HARD };
     private Tile tiles[][];
 
     /* constructor */
