@@ -25,13 +25,6 @@ public class Board {
     private Random random;
 
 
-   /*public enum Color
-
-    {
-        RED,
-        GREEN
-    }*/
-
     /* constructor */
     public Board(int size) {
         this.size = size;
@@ -84,7 +77,6 @@ public class Board {
         }
     }
 
-
     /**
      * Prints board with the color of each tile
      * @return
@@ -121,6 +113,20 @@ public class Board {
     public Tile[][] getBoard() { return board; }
 
     public Tile getClickedTile(int x, int y){
+
+        for(int r= 0 ; r < board.length ; r++){
+            for(int c = 0 ; c < board[r].length; c++) {
+
+                Tile tile = board[r][c];
+                int xBound = tile.getX() + size;
+                int yBound = tile.getY() + size;
+
+                //if point clicked is within tile bounds
+                if((x <= xBound && y<= yBound) && (x >= tile.getX() && y >= tile.getY())){
+                    return tile;
+                }
+            }
+        }
         return null;
     }
 
@@ -128,4 +134,10 @@ public class Board {
         return false;
     }
 
+    public void setXY(Tile t,int x,int y, int size){
+        t.setX(x);
+        t.setY(y);
+        t.setSize(size);
+
+    }
 }

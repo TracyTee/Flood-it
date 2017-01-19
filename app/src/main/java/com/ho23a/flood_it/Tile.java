@@ -13,6 +13,7 @@ public class Tile {
     private static int x; //x coordinates
     private static int y; //y coordinates
     private int color;
+    private static int size; //tile size
 
     public Paint p;
 
@@ -54,7 +55,19 @@ public class Tile {
         return this.y;
     }
 
+    /**
+     * Set lower x bound
+     * @param x
+     */
+    public void setX(int x) {
+        Tile.x = x;
+    }
 
+    public void setY(int y) {
+        Tile.y = y;
+    }
 
-
+    public void setSize(int size) {
+        Tile.size = size;
+    }
 }

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Level level = Level.DEFAULT;
     private Board board;
     private int numSteps;
+    private int initialNumSteps;
     private HashMap<Level, Integer> levelToSizeMap = new HashMap<>();
     private HashMap<Level, Integer> levelToNumSteps = new HashMap<>();
 
@@ -33,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
         setup();
         board = new Board(levelToSizeMap.get(level));
 
+        initialNumSteps = levelToNumSteps.get(level);
+        numSteps = initialNumSteps;
         stepsText = ((TextView) findViewById(R.id.stepsText));
-        boardView = (BoardView) findViewById(R.id.board_view);
+        stepsText.setText(String.format("Steps: %d/%d", initialNumSteps, initialNumSteps));
 
+        boardView = (BoardView) findViewById(R.id.board_view);
         boardView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -62,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (updated) {
             // continue game, update boardView and stepsText
-            numSteps -= 1;
-            stepsText.setText(String.format("Steps: %d/20", Integer.toString(numSteps)));
+            updateStepsText();
             resetBoardView();
         }
 
@@ -113,8 +116,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * update number of steps on click
      */
-    private void updateStepsText(boolean updatedBoard){
-
+    private void updateStepsText(){
+        numSteps -= 1;
+        stepsText.setText(String.format("Steps: %d/%d", numSteps, initialNumSteps));
     }
 
 }
