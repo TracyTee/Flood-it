@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setup();
         board = new Board(levelToSizeMap.get(level));
 
-
-
-
-
         // set steps to stepstext
         stepsText = ((TextView) findViewById(R.id.stepsText));
         boardView = (BoardView) findViewById(R.id.board_view);
