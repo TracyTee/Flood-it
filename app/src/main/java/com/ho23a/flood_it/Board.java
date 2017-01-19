@@ -51,7 +51,7 @@ public class Board {
      */
     private void floodFill() {
         int colors[];
-        switch(numColors) {
+        switch (numColors) {
             case 2:
                 colors = new int[]{Color.RED, Color.BLUE};
                 break;
@@ -79,25 +79,27 @@ public class Board {
 
     /**
      * Prints board with the color of each tile
+     *
      * @return
      */
     public int[][] printBoard() {
-        int [][] array = new int[size][size];
+        int[][] array = new int[size][size];
         for (int r = 0; r < array.length; r++) {
             for (int c = 0; c < array[r].length; c++) {
-                System.out.println(array[r][c] = (board[r][c].getColor()));
-//                if (board[r][c].getColor() == Color.BLUE) {
-//                    System.out.println(String.format("%d, %d: BLUE", r, c));
-//                } else {
-//                    System.out.println(String.format("%d, %d: RED", r, c));
-//                }
+                //System.out.println(array[r][c] = (board[r][c].getColor()));
+               if (board[r][c].getColor() == Color.BLUE) {
+                    System.out.print("B ");
+                } else {
+                    System.out.print("R ");
+                }
             }
+            System.out.println();
         }
         return array;
 
     }
 
-    public boolean checkWon(){
+    public boolean checkWon() {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[r].length; c++) {
                 if (board[0][0].getColor() != board[r][c].getColor()) {
@@ -110,19 +112,21 @@ public class Board {
     }
 
 
-    public Tile[][] getBoard() { return board; }
+    public Tile[][] getBoard() {
+        return board;
+    }
 
-    public Tile getClickedTile(int x, int y){
+    public Tile getClickedTile(int x, int y) {
 
-        for(int r= 0 ; r < board.length ; r++){
-            for(int c = 0 ; c < board[r].length; c++) {
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[r].length; c++) {
 
                 Tile tile = board[r][c];
                 int xBound = tile.getX() + size;
                 int yBound = tile.getY() + size;
 
                 //if point clicked is within tile bounds
-                if((x <= xBound && y<= yBound) && (x >= tile.getX() && y >= tile.getY())){
+                if ((x <= xBound && y <= yBound) && (x >= tile.getX() && y >= tile.getY())) {
                     return tile;
                 }
             }
@@ -131,7 +135,51 @@ public class Board {
     }
 
     public boolean updateBoard(int newColor) {
-        return false;
+
+        int oldColor = board[0][0].getColor();
+
+        for (int r = 0; r < board.length; r++) {
+
+            for (int c = 0; c < board[r].length; c++) {
+                Tile tile = board[r][c];
+
+
+                if(newColor == oldColor || board[r][c].getColor() != oldColor)
+                   return false;
+
+                updateBoard(oldColor, newColor, r, c);
+                //check adjacent squares and change colors
+                //  if(tile.getColor() == originalColor )
+                //      tile.setColor(newColor);
+                // if(checkBounds(r-1, c )){
+                //    swapColor(r-1,c,originalColor,newColor);
+            }
+
+
+        }
+        return true;
+    }
+
+
+
+
+    private void updateBoard(int oldColor,int newColor,int x,int y){
+        if ( board[x][y].getColor() != oldColor)
+
+           return ;
+
+        board[x][y].setColor(newColor); //change the color of the current box
+
+        //Make the recursive call for any neighboring boxes:
+        if (x > 0)
+            updateBoard( oldColor, newColor, x - 1, y) ; //on box to the left
+        if (x < board.length)
+            updateBoard(oldColor, newColor, x + 1, y);  //on box to the right
+        if(y > 0)
+            updateBoard(oldColor, newColor, x, y - 1) ; //box to up
+        if (y < board.length)
+            updateBoard(oldColor, newColor, x, y + 1);  //box to down
+
     }
 
     public void setXY(Tile t,int x,int y, int size){
@@ -139,5 +187,20 @@ public class Board {
         t.setY(y);
         t.setSize(size);
 
+    }
+
+    private boolean checkBounds(int x, int y){
+        if((x >= 0 && x< board.length)
+            && (y >= 0 && y < board.length)){
+            return true;
+        }
+        return false;
+    }
+
+    private void swapColor(int x, int y, int originalColor , int newColor){
+        Tile tile = board[x][y];
+
+        if(tile.getColor() == originalColor )
+            tile.setColor(newColor);
     }
 }
