@@ -65,7 +65,7 @@ public class Board {
             case 4:
                 colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
                 break;
-            case 6:
+            case 8:
                 colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW, Color.MAGENTA};
                 break;
             default:
@@ -119,12 +119,9 @@ public class Board {
 
     }
 
-    public void setLevel(String level){
-        switch(level){
-            case "EASY":
-
-        }
-    }
+//    public Tile getClickedTile(int x, int y){
+//
+//    }
 
     public Tile[][] getBoard() { return board; }
 }

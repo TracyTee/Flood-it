@@ -1,21 +1,11 @@
 package com.ho23a.flood_it;
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.widget.GridView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private TextView stepsText;
@@ -26,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Board board;
     private HashMap<Level, Integer> levelToSizeMap = new HashMap<>();
 
+    private HashMap<Level, Integer> levelToNumSteps = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Settings settings = intent.getParcelableExtra(SettingsActivity.SETTINGS_LABEL);
-
-        levelToSizeMap.put(Level.DEFAULT, 2);
-        levelToSizeMap.put(Level.EASY, 2);
-        levelToSizeMap.put(Level.MEDIUM, 4);
-        levelToSizeMap.put(Level.HARD, 8);
-
         colorScheme = settings.getColorScheme();
         level = settings.getLevel();
+
+        setBoardSize();
         board = new Board(levelToSizeMap.get(level));
+
+        setNumSteps();
 
         // set steps to stepstext
         stepsText = ((TextView) findViewById(R.id.stepsText));
@@ -52,5 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetBoardView() {
         boardView.reset(board);
+    }
+
+    private void setBoardSize() {
+        levelToSizeMap.put(Level.DEFAULT, 2);
+        levelToSizeMap.put(Level.EASY, 2);
+        levelToSizeMap.put(Level.MEDIUM, 4);
+        levelToSizeMap.put(Level.HARD, 8);
+    }
+
+    private void setNumSteps() {
+        levelToNumSteps.put(Level.DEFAULT,4);
+        levelToNumSteps.put(Level.EASY,4);
+        levelToNumSteps.put(Level.MEDIUM,12);
+        levelToNumSteps.put(Level.HARD,16);
+
+
     }
 }
