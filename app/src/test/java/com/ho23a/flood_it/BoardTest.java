@@ -14,7 +14,7 @@ import java.util.Arrays;
  */
 public class BoardTest {
 
-    Board boardClass= new Board(Level.EASY);;
+    Board boardClass= new Board(Level.HARD);;
 
    // @Before
     public void setupBoard(){

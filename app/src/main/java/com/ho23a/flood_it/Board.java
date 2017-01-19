@@ -98,14 +98,37 @@ public class Board {
     }
 
 
+    /**
+     * Prints board with the color of each tile
+     * @return
+     */
     public int[][] printBoard() {
         int [][] array = new int[size][size];
         for (int r = 0; r < array.length; r++) {
             for (int c = 0; c < array[r].length; c++) {
-                array[r][c] = (board[r][c].getColor());
+                System.out.println(array[r][c] = (board[r][c].getColor()));
             }
         }
         return array;
 
+    }
+
+    public boolean checkWon(){
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[r].length; c++) {
+                if (board[0][0].getColor() != board[r][c].getColor()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+
+    }
+
+    public void setLevel(String level){
+        switch(level){
+            case "EASY":
+
+        }
     }
 }
