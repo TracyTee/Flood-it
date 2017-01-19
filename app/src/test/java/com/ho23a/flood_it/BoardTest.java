@@ -14,11 +14,11 @@ import java.util.Arrays;
  */
 public class BoardTest {
 
-    Board boardClass= new Board(Level.HARD);;
+    Board boardClass= new Board(4);;
 
    // @Before
     public void setupBoard(){
-        Board boardClass = new Board(Level.EASY);
+        Board boardClass = new Board(4);
 
     }
 

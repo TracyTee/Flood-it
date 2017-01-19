@@ -33,8 +33,9 @@ public class Board {
     }*/
 
     /* constructor */
-    public Board(Level level) {
-        createBoard(level);
+    public Board(int size) {
+        this.size = size;
+        createBoard(size);
     }
 
     public Board() {
@@ -44,32 +45,10 @@ public class Board {
     /**
      * initializes board and its components
      */
-    public void createBoard(Level level) {
+    public void createBoard(int size) {
 
-        //determine boards size based on level
-        switch (level) {
-            case EASY:
-                size = 2;
-                numColors = 2;
-                break;
-            case MEDIUM:
-                size = 4;
-                numColors = 4;
-
-                break;
-            case HARD:
-                size = 8;
-                numColors = 8;
-
-                break;
-            default:
-                size = 2;
-                numColors = 2;
-
-                break;
-
-        }
-
+        //determine number of colors based on size
+        numColors = size;
         board = new Tile[size][size];
         floodFill();
     }
@@ -78,24 +57,35 @@ public class Board {
      * fill board with random colors
      */
     private void floodFill() {
-
-        if (numColors == 2) {
-            int colors[] = new int[]{Color.RED, Color.BLUE};
-            for (int r = 0; r < board.length; r++) {
-                for (int c = 0; c < board[r].length; c++) {
-                    board[r][c] = new Tile();
-                     random = new Random();
-                       int randomNum = random.nextInt(2);
-
-                    board[r][c].setColor(colors[randomNum]);
-
-                }
-            }
-
-
+        int colors[];
+        switch(numColors) {
+            case 2:
+                colors = new int[]{Color.RED, Color.BLUE};
+                break;
+            case 4:
+                colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
+                break;
+            case 6:
+                colors = new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW, Color.MAGENTA};
+                break;
+            default:
+                colors = new int[]{Color.RED, Color.BLUE};
+                break;
         }
 
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[r].length; c++) {
+                board[r][c] = new Tile();
+                random = new Random();
+                int randomNum = random.nextInt(numColors);
+                board[r][c].setColor(colors[randomNum]);
+
+            }
+        }
+
+
     }
+
 
 
     /**
