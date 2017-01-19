@@ -87,7 +87,6 @@ public class Board {
     }
 
 
-
     /**
      * Prints board with the color of each tile
      * @return
@@ -97,6 +96,11 @@ public class Board {
         for (int r = 0; r < array.length; r++) {
             for (int c = 0; c < array[r].length; c++) {
                 System.out.println(array[r][c] = (board[r][c].getColor()));
+//                if (board[r][c].getColor() == Color.BLUE) {
+//                    System.out.println(String.format("%d, %d: BLUE", r, c));
+//                } else {
+//                    System.out.println(String.format("%d, %d: RED", r, c));
+//                }
             }
         }
         return array;
@@ -121,4 +125,6 @@ public class Board {
 
         }
     }
+
+    public Tile[][] getBoard() { return board; }
 }

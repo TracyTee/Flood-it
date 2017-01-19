@@ -1,9 +1,14 @@
 package com.ho23a.flood_it;
 
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -14,13 +19,12 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private TextView stepsText;
-    private GridView boardView;
+    private BoardView boardView;
 
     private ColorScheme colorScheme;
-    private Level level;
+    private Level level = Level.DEFAULT;
     private Board board;
     private HashMap<Level, Integer> levelToSizeMap = new HashMap<>();
-//    private int[] buttonColors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,30 +34,23 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Settings settings = intent.getParcelableExtra(SettingsActivity.SETTINGS_LABEL);
 
-        colorScheme = settings.getColorScheme();
-        level = settings.getLevel();
-        board = new Board();
-
-        // set steps to stepstext
-        stepsText = ((TextView) findViewById(R.id.stepsText));
-        boardView = ((GridView) findViewById(R.id.boardView));
-
         levelToSizeMap.put(Level.DEFAULT, 2);
         levelToSizeMap.put(Level.EASY, 2);
         levelToSizeMap.put(Level.MEDIUM, 4);
         levelToSizeMap.put(Level.HARD, 8);
 
-        createBoardView();
-        createButtons();
+        colorScheme = settings.getColorScheme();
+        level = settings.getLevel();
+        board = new Board(levelToSizeMap.get(level));
+
+        // set steps to stepstext
+        stepsText = ((TextView) findViewById(R.id.stepsText));
+        boardView = (BoardView) findViewById(R.id.board_view);
+        resetBoardView();
+
     }
 
-    private void createBoardView() {
-        int size = levelToSizeMap.get(level);
-
-//        board.createBoard(level);
+    private void resetBoardView() {
+        boardView.reset(board);
     }
-
-    private void createButtons() {
-    }
-
 }
