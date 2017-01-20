@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         Tile clickedTile = board.getClickedTile(touchedX, touchedY);
 
         if (clickedTile != null) {
-//            System.out.println(String.format("clicked [%d, %d]", clickedTile.getX(), clickedTile.getY()));
             return board.updateBoard(clickedTile.getColor());
         }
         // did not update board

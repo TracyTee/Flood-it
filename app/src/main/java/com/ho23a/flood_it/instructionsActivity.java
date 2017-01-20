@@ -21,7 +21,6 @@ public class instructionsActivity extends AppCompatActivity {
                 "2. Select a color from the choices on the bottom of the screen.\n" +
                 "3. This will change continuous tiles of the same color as the corner tile to the specified color.\n");
 
-//        instruction.setTextSize(25);
 
         ((Button) findViewById(R.id.menuButton)).setOnClickListener(new View.OnClickListener() {
             @Override

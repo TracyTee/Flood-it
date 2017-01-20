@@ -26,10 +26,10 @@ public class BoardTest {
 
     }
 
-//    @Test
-//    public void printBoard(){
-//        System.out.println(Arrays.toString(boardClass.printBoard()));
-//    }
+    @Test
+    public void printBoard(){
+        //System.out.println(Arrays.toString(boardClass.printBoard()));
+    }
 
     @Test
     public void updateBoardTest(){

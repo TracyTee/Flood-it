@@ -17,7 +17,6 @@ public class Board {
         createBoard();
     }
 
-    public Board() {}
 
     /**
      * initializes board and its components
@@ -64,7 +63,6 @@ public class Board {
      * @return
      */
     public void printBoard() {
-        System.out.println("in print");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 System.out.println(String.format("%d, %d, %d", board[i][j].getX(), board[i][j].getY(), board[i][j].getSize()));
@@ -84,8 +82,13 @@ public class Board {
         return true;
     }
 
+    /**
+     *
+     * @param x coordinate
+     * @param y
+     * @return
+     */
     public Tile getClickedTile(int x, int y) {
-//        System.out.println(String.format("%d, %d", x, y));
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
                 Tile tile = board[r][c];
@@ -93,9 +96,7 @@ public class Board {
                 int right = left + tile.getSize();
                 int top = tile.getY();
                 int bottom = top + tile.getSize();
-                //if point clicked is within tile bounds
                 if (x <= right && x >= left && y <= bottom && y >= top) {
-//                    System.out.println(String.format("x: %d - %d, y: %d - %d", left, right, top, bottom));
                     return tile;
                 }
             }
@@ -135,19 +136,4 @@ public class Board {
     public Tile[][] getBoard() {
         return board;
     }
-
-//    private boolean checkBounds(int x, int y){
-//        if((x >= 0 && x< board.length)
-//            && (y >= 0 && y < board.length)){
-//            return true;
-//        }
-//        return false;
-//    }
-//
-//    private void swapColor(int x, int y, int originalColor , int newColor){
-//        Tile tile = board[x][y];
-//
-//        if(tile.getColor() == originalColor )
-//            tile.setColor(newColor);
-//    }
 }

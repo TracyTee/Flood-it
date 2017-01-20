@@ -59,7 +59,6 @@ public class BoardView extends View {
             int y = tileSize * i;
             int bottomBound = tileSize * (i+1);
             for (int j = 0; j < boardSize; j++) {
-//                System.out.println(String.format("%d, %d, %d, %d", x, y, tileSize * (j + 1), bottomBound));
                 mDrawable[i][j] = new ShapeDrawable();
                 mDrawable[i][j].getPaint().setColor(board[i][j].getColor());
                 mDrawable[i][j].setBounds(x + tileSize * j, y, tileSize * (j + 1), bottomBound);
