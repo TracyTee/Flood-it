@@ -51,6 +51,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/colorSpinner"
+        android:layout_below="@+id/levelLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

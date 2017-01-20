@@ -18,7 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/menuButton" />
+        android:layout_above="@+id/menuButton"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <Button
         android:text="Main Menu"

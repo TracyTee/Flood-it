@@ -8,6 +8,8 @@
     </string-array>
     <string name="title_activity_settings1">Settings</string>
     <string name="steps_text">Steps: %1$d/%2$d</string>
+    <string name="lost_text">Sorry you lost</string>
+    <string name="won_text">You won using %s steps</string>
 
     <!-- Strings related to Settings -->
 

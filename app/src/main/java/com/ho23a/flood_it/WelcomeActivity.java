@@ -44,8 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void startInstructions(){
         //open instructions display page
-        Intent intent = new Intent(this, instructionsActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, instructionsActivity.class));
     }
 
     public void startSettings() {

@@ -16,7 +16,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/gameOverText"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:text="Hello"
+        android:textAlignment="center" />
 
     <Button
         android:text="Play Again"

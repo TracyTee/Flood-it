@@ -29,15 +29,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    private void save() {
-//        // TODO change MainActivity to WelcomeActivity
-//        colorSchemeLabel = "";
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.putExtra(SETTINGS_LABEL, settings);
-//        startActivity(intent);
-    }
-
-
     private void setLevelSpinner() {
         levelSpinner = (Spinner) findViewById(R.id.levelSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -76,5 +67,4 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
     }
-
 }

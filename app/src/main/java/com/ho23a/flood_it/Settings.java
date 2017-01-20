@@ -1,20 +1,12 @@
 package com.ho23a.flood_it;
 
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v4.content.ContextCompat;
-
-/**
- * Created by demouser on 1/17/17.
- */
-
 public class Settings {
     private ColorScheme colorScheme;
     private Level level;
 
-    private Settings(){}
+    private Settings(){
+        level = Level.DEFAULT;
+    }
 
     private static Settings instance;
 
@@ -24,8 +16,6 @@ public class Settings {
         }
         return instance;
     }
-
-    // Settings.getInstance().getLevel();
 
     public void setColorScheme(ColorScheme colorScheme) {
         this.colorScheme = colorScheme;

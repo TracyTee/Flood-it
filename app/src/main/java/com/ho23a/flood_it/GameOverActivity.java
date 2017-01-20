@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class GameOverActivity extends AppCompatActivity {
@@ -17,21 +18,25 @@ public class GameOverActivity extends AppCompatActivity {
         boolean isWon = intent.getBooleanExtra(MainActivity.GAME_WON, false);
 
         TextView gameOverText = (TextView) findViewById(R.id.gameOverText);
-        String displayText;
-        if (isWon == true) {
+        if (isWon) {
             String winNumSteps = intent.getStringExtra(MainActivity.WIN_NUM_STEPS);
-            displayText = String.format("You won using %d steps", winNumSteps);
+            gameOverText.setText(String.format(getString(R.string.won_text), winNumSteps));
         } else {
-            displayText = "Sorry you lost";
+            gameOverText.setText(R.string.lost_text);
         }
-        gameOverText.setText(displayText);
-    }
 
-    public void replay(View view) {
-        startActivity(new Intent(this, MainActivity.class));
-    }
+        ((Button) findViewById(R.id.replayButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), MainActivity.class));
+            }
+        });
 
-    public void startMenu(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        ((Button) findViewById(R.id.menuButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), WelcomeActivity.class));
+            }
+        });
     }
 }

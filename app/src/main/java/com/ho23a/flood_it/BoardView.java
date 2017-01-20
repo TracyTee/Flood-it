@@ -12,18 +12,35 @@ import android.view.View;
 
 public class BoardView extends View {
     private ShapeDrawable[][] mDrawable;
-    private Board board;
+    private Tile[][] board;
+    private int boardSize;
+    private int tileSize;
 
-    public BoardView(Context context) {
-        super(context);
-    }
+    public BoardView(Context context) { super(context); }
 
     public BoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public void reset(Board board) {
+    public void setBoardSize(int boardSize) {
+        this.boardSize = boardSize;
+        mDrawable = new ShapeDrawable[boardSize][boardSize];
+    }
+
+    public void setTileSize(int tileSize) {
+        this.tileSize = tileSize;
+    }
+
+    public void reset(Tile[][] board) {
+        System.out.println("boardView.reset()");
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                Tile tile = board[i][j];
+                System.out.println(String.format("%d, %d, %d", tile.getX(), tile.getY(), tile.getSize()));
+            }
+        }
         this.board = board;
+        postInvalidate();
     }
 
     @Override
@@ -37,16 +54,6 @@ public class BoardView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        int screenWidth = getWidth();
-        int screenHeight = getHeight();
-
-        Tile[][] tiles = board.getBoard();
-        int boardSize = tiles.length;
-        int tileSize = Math.min(screenWidth, screenHeight)/ boardSize;
-
-//        board.printBoard();
-
-        mDrawable = new ShapeDrawable[boardSize][boardSize];
         for (int i = 0; i < boardSize; i++) {
             int x = 0;
             int y = tileSize * i;
@@ -54,7 +61,7 @@ public class BoardView extends View {
             for (int j = 0; j < boardSize; j++) {
 //                System.out.println(String.format("%d, %d, %d, %d", x, y, tileSize * (j + 1), bottomBound));
                 mDrawable[i][j] = new ShapeDrawable();
-                mDrawable[i][j].getPaint().setColor(tiles[i][j].getColor());
+                mDrawable[i][j].getPaint().setColor(board[i][j].getColor());
                 mDrawable[i][j].setBounds(x + tileSize * j, y, tileSize * (j + 1), bottomBound);
                 mDrawable[i][j].draw(canvas);
             }

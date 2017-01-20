@@ -11,7 +11,6 @@
     tools:context="com.ho23a.flood_it.WelcomeActivity">
 
     <TextView
-        android:text="Flood-it!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,7 +18,8 @@
         android:layout_marginTop="31dp"
         android:id="@+id/gameTitle"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:text="Flood-It!" />
 
     <Button
         android:text="PLAY"
@@ -36,7 +36,6 @@
         android:text="Instructions "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
         android:id="@+id/instructionsButton"
         android:textStyle="normal|bold"
         android:layout_below="@+id/playButton"
@@ -46,9 +45,9 @@
         android:text="Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
         android:id="@+id/settingsButton"
         android:textStyle="normal|bold"
         android:layout_below="@+id/instructionsButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/playButton"
+        android:layout_alignEnd="@+id/playButton" />
 </RelativeLayout>

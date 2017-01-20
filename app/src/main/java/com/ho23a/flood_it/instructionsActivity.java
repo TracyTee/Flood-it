@@ -15,16 +15,23 @@ public class instructionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructions);
 
         TextView instruction = ((TextView) findViewById(R.id.instructionsText));
-        instruction.setText("Welcome to Flood it game.\n " +
-                "Goal: Turn the entire grid into one color in the specified number of steps.\n " +
-                "Your guiding key is the top left corner tile. \n" +
-                "Select a color from the choices on the bottom of the screen.\n" +
-                " This will change continuous tiles of the same color as the corner tile to the specified color.\n");
+        instruction.setText("Welcome to Flood-It! game.\n\n" +
+                "Goal: Turn the entire grid into one color in the specified number of steps.\n" +
+                "1. Your guiding key is the top left corner tile.\n" +
+                "2. Select a color from the choices on the bottom of the screen.\n" +
+                "3. This will change continuous tiles of the same color as the corner tile to the specified color.\n");
 
-        instruction.setTextSize(25);
+//        instruction.setTextSize(25);
+
+        ((Button) findViewById(R.id.menuButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startMenu();
+            }
+        });
     }
 
-    public void startMenu(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+    private void startMenu() {
+        startActivity(new Intent(this, WelcomeActivity.class));
     }
 }
